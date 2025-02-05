@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Gift</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: pink;
+            font-family: 'Dancing Script', cursive;
+        }
+        .container {
+            position: relative;
+            text-align: center;
+        }
+        .envelope {
+            width: 200px;
+            height: 150px;
+            background-color: red;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+        .envelope::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            clip-path: polygon(0 0, 50% 50%, 100% 0);
+            transition: transform 1s ease-in-out;
+        }
+        .envelope.open::before {
+            transform: translateY(-100%);
+        }
+        .card {
+            display: none;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: auto;
+            text-align: center;
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
+            font-family: 'Dancing Script', cursive;
+            font-size: 18px;
+        }
+        .hearts {
+            font-size: 24px;
+            color: red;
+        }
+        .photo-upload {
+            margin-top: 10px;
+        }
+        .lock-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+        .lock-button:hover {
+            background-color: darkred;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="envelope" onclick="openEnvelope()">
+            <p>Valentine's Day Gift</p>
+        </div>
+        <div class="card" id="card">
+            <p class="hearts">❤️💌❤️</p>
+            <p>Dear Chinnu,</p>
+            <p>As I sit down to write this letter, my heart overflows with love for you. From the moment you came into my life, every day has felt like a beautiful adventure. Your smile lights up my world, and your love fills my heart with joy I never knew possible. Remember our first date? I was so nervous, but you made everything feel so natural, late-night talks, and all the little moments we've shared - they mean everything to me.</p>
+            <p>You've shown me what true love really is. This Valentine's Day, I want you to know that my love for you grows stronger with each passing day. I promise to cherish you, support you, and love you unconditionally through all of life's ups and downs. You're not just my girlfriend - you're my best friend, my partner, and my forever love. Here's to many more Valentine's Days together, my beautiful.</p>
+            <p class="hearts">❤️💌❤️</p>
+            <p><strong>Let's love each other until our last breath.</strong></p>
+            <input type="file" class="photo-upload" accept="image/*">
+            <button class="lock-button" onclick="closeEnvelope()">Lock Your Love</button>
+        </div>
+    </div>
+    <script>
+        function openEnvelope() {
+            document.querySelector('.envelope').classList.add('open');
+            setTimeout(() => {
+                document.getElementById('card').style.display = 'block';
+            }, 1000);
+        }
+        function closeEnvelope() {
+            document.getElementById('card').style.display = 'none';
+            document.querySelector('.envelope').classList.remove('open');
+        }
+    </script>
+</body>
+</html>
